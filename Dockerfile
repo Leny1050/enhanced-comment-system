@@ -1,12 +1,14 @@
-# ---- базовый образ с PHP 8.2 и SQLite ----
-FROM php:8.2-cli
+# ---- Dockerfile (копируйте как есть) ----
+FROM php:8.2-apache
 
-# Включаем расширения pdo_sqlite и pdo_mysql (на будущее)
-RUN docker-php-ext-install pdo pdo_sqlite pdo_mysql
+# Включить расширения, нужные скрипту
+RUN docker-php-ext-install pdo pdo_sqlite
 
-WORKDIR /app
-COPY . .
+# Скопировать проект в DocumentRoot
+COPY . /var/www/html/
 
-# Render прокидывает порт 10000 по умолчанию
-EXPOSE 10000
-CMD ["php", "-S", "0.0.0.0:10000", "-t", "public"]
+# Настроить права папки storage (SQLite)
+RUN chown -R www-data:www-data /var/www/html/storage
+
+# Включить Apache mod_rewrite (для красивых URL, если захотите)
+RUN a2enmod rewrite

@@ -17,6 +17,8 @@ RUN set -ex \
 # ------------------------------------------------------------------
 COPY . /var/www/html/
 
+RUN mkdir -p /var/www/html/storage && chown -R www-data:www-data /var/www/html/storage
+
 # ------------------------------------------------------------------
 # 3) set correct permissions for SQLite file/folder
 # ------------------------------------------------------------------

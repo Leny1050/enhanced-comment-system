@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comment System – Documentation</title>
+  <style>
+    body{font-family:system-ui,sans-serif;margin:0;color:#333;line-height:1.6;background:#fafafa;}
+    header{background:#0d6efd;color:#fff;padding:20px;text-align:center;}
+    .lang-tabs{display:flex;justify-content:center;margin:20px 0;gap:20px;}
+    .lang-tabs button{padding:8px 16px;border:none;border-bottom:3px solid transparent;background:none;cursor:pointer;font-size:1rem;}
+    .lang-tabs button.active{border-color:#0d6efd;font-weight:bold;}
+    section{max-width:900px;margin:0 auto 40px;background:#fff;padding:24px;border-radius:8px;box-shadow:0 2px 4px rgba(0,0,0,.08);}
+    h2{margin-top:0;}
+    code{background:#f1f1f1;padding:2px 4px;border-radius:4px;}
+    img{max-width:100%;border-radius:8px;}
+  </style>
+  <script>
+    function show(lang) {
+      document.querySelectorAll('[data-lang]').forEach(el=>el.style.display=el.dataset.lang===lang?'block':'none');
+      document.querySelectorAll('.lang-tabs button').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
+    }
+    window.addEventListener('DOMContentLoaded',()=>show('en'));
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Enhanced Comment System</h1>
+  </header>
+  <div class="lang-tabs">
+    <button data-lang="en" onclick="show('en')">English</button>
+    <button data-lang="ru" onclick="show('ru')">Русский</button>
+  </div>
+
+  <section data-lang="en">
+    <img src="../public/assets/img/cover.png" alt="cover">
+    <h2>Overview</h2>
+    <p><strong>Enhanced Comment System</strong> is a modern, responsive and secure commenting solution you can embed into any PHP-based website. It offers a sleek UI, spam protection, and simple integration (copy-paste one code snippet).</p>
+    <h2>Quick Start (Local XAMPP)</h2>
+    <ol>
+      <li>Unzip the package into <code>C:/xampp/htdocs/comment_system</code>.</li>
+      <li>Create a MySQL database <code>comments</code> (utf8mb4) and import <code>install.sql</code>.</li>
+      <li>Open <code>config/config.php</code> and replace all <code>&lt;&lt;&lt;CHANGE-ME&gt;&gt;&gt;</code> placeholders (DB credentials, admin password hash, reCAPTCHA keys).</li>
+      <li>Visit <code>http://localhost/comment_system/public/index.php</code> – the widget will load.</li>
+      <li>Moderate comments at <code>http://localhost/comment_system/public/admin.php</code>.</li>
+    </ol>
+    <h2>Deploying on Shared / VPS Hosting</h2>
+    <ol>
+      <li>Upload the <code>comment_system</code> folder to your public_html (or sub‑folder).</li>
+      <li>Create a MySQL database from your hosting control panel; note credentials.</li>
+      <li>Edit <code>config/config.php</code> with these credentials.</li>
+      <li>Import <code>install.sql</code> via phpMyAdmin (or MySQL CLI).</li>
+      <li>Make sure <code>public/</code> is accessible via URL. You can point a sub‑domain to that folder or move files up one level.</li>
+      <li>Enable HTTPS on your host (Let's Encrypt) – required for reCAPTCHA.</li>
+    </ol>
+    <h2>Customization Tips</h2>
+    <ul>
+      <li>Change the logo at <code>public/assets/img/logo.png</code>.</li>
+      <li>Edit primary colors in <code>public/assets/css/style.css</code> – variables at the top.</li>
+      <li>Switch default theme (<em>light/dark</em>) in <code>config/config.php</code>.</li>
+      <li>Add social login by creating <code>config/oauth.php</code> and extending <code>CommentController.php</code>.</li>
+    </ul>
+    <h2>Support</h2>
+    <p>Create an issue on GitHub or email <code>support@example.com</code>.</p>
+  </section>
+
+  <section data-lang="ru">
+    <img src="../public/assets/img/cover.png" alt="cover">
+    <h2>Обзор</h2>
+    <p><strong>Enhanced Comment System</strong> – современная, адаптивная и безопасная система комментариев, которую можно встроить на любой PHP‑сайт. Стильный интерфейс, защита от спама и простая интеграция (копируйте один сниппет).</p>
+    <h2>Быстрый старт (XAMPP)</h2>
+    <ol>
+      <li>Распакуйте архив в <code>C:/xampp/htdocs/comment_system</code>.</li>
+      <li>Создайте базу MySQL <code>comments</code> (utf8mb4) и импортируйте <code>install.sql</code>.</li>
+      <li>Откройте <code>config/config.php</code> и замените все пометки <code>&lt;&lt;&lt;CHANGE-ME&gt;&gt;&gt;</code> (данные БД, хеш пароля админа, ключи reCAPTCHA).</li>
+      <li>Перейдите по адресу <code>http://localhost/comment_system/public/index.php</code> – виджет загрузится.</li>
+      <li>Панель модерации доступна на <code>http://localhost/comment_system/public/admin.php</code>.</li>
+    </ol>
+    <h2>Развёртывание на хостинге</h2>
+    <ol>
+      <li>Загрузите папку <code>comment_system</code> на <code>public_html</code> вашего хостинга.</li>
+      <li>Создайте базу данных MySQL и сохраните реквизиты.</li>
+      <li>Пропишите их в <code>config/config.php</code>.</li>
+      <li>Через phpMyAdmin импортируйте файл <code>install.sql</code>.</li>
+      <li>Убедитесь, что директория <code>public/</code> открывается по URL (если нужно, переместите файлы на уровень выше).</li>
+      <li>Включите HTTPS (Let’s Encrypt) – требуется для reCAPTCHA.</li>
+    </ol>
+    <h2>Советы по кастомизации</h2>
+    <ul>
+      <li>Замените логотип: <code>public/assets/img/logo.png</code>.</li>
+      <li>Измените основные цвета в <code>public/assets/css/style.css</code> – переменные CSS в начале файла.</li>
+      <li>Установите тему по умолчанию (<em>light/dark</em>) в <code>config/config.php</code>.</li>
+      <li>Добавьте социальный вход, создав <code>config/oauth.php</code> и расширив <code>CommentController.php</code>.</li>
+    </ul>
+    <h2>Поддержка</h2>
+    <p>Пишите на <code>support@example.com</code>.</p>
+  </section>
+</body>
+</html>

@@ -1,0 +1,17 @@
+
+# IMPORTANT SETTINGS TO CHANGE BEFORE GOING LIVE
+
+1. Admin password (config/config.php → 'admin' → 'password_hash').
+   Use the helper script /tools/generate_password.php or PHP's password_hash.
+
+2. reCAPTCHA keys (config/config.php → 'security' → recaptcha_site_key / secret_key).
+   Obtain keys from https://www.google.com/recaptcha/admin
+
+3. Database credentials (config/config.php → 'db').
+
+4. Site URL in docs/docs_en.html and docs/docs_ru.html if you want absolute URLs in code snippets.
+
+5. Theme choice: config/config.php → 'site' → 'default_theme' (light|dark).
+
+6. If you add social logins (OAuth), add corresponding client IDs/secrets in config/oauth.php (not present by default).
+
